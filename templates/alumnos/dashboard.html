@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Alumnos cargados</h1>
+
+<a href="{% url 'crear_alumno' %}" class="btn btn-success mb-3">Nuevo Alumno</a>
+
+<ul class="list-group">
+    {% for a in alumnos %}
+    <li class="list-group-item">
+        {{ a.nombre }} - {{ a.curso }} - {{ a.nota }}
+        <a href="{% url 'enviar_pdf' a.pk %}" class="btn btn-danger btn-sm float-end">PDF</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

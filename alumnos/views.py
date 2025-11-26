@@ -6,9 +6,7 @@ from reportlab.pdfgen import canvas
 from django.http import HttpResponse
 from django.core.mail import EmailMessage
 
-@login_required
-def dashboard(request):
-    return render(request, "dashboard.html")
+
 
 @login_required
 def dashboard(request):
