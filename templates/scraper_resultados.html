@@ -1,0 +1,23 @@
+<h1>Scraping educativo</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Buscar</button>
+</form>
+
+{% if resultados %}
+    <h2>Resultados:</h2>
+    <table border="1" cellpadding="5">
+        <tr><th>Texto</th></tr>
+        {% for r in resultados %}
+        <tr>
+            <td>{{ r }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="/scraper/enviar/?data={{ resultados|join:', ' }}">
+        Enviar resultado por correo
+    </a>
+{% endif %}

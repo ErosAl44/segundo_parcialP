@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Scraper{% endblock %}
+
+{% block content %}
+<h2>Buscador en Wikipedia</h2>
+
+<form method="POST" class="mb-3">
+    {% csrf_token %}
+    <div class="input-group">
+        <input type="text" name="termino" class="form-control" placeholder="Buscar..." required>
+        <button class="btn btn-primary" type="submit">Buscar</button>
+    </div>
+</form>
+
+{% if resultados %}
+    <ul class="list-group">
+    {% for r in resultados %}
+        <li class="list-group-item">
+            <a href="{{ r.link }}" target="_blank"><strong>{{ r.titulo }}</strong></a>
+            <br>
+            {{ r.descripcion }}
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

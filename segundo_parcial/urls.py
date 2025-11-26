@@ -1,0 +1,17 @@
+from django.contrib import admin
+from django.urls import path, include
+from django.http import HttpResponse
+from cuentas.views import login_view
+from alumnos.views import dashboard
+
+def home(request):
+    return HttpResponse("<h1>Bienvenido al Segundo Parcial</h1><p>Todo funciona.</p>")
+
+urlpatterns = [
+    path('', login_view, name="home"),            # Página de inicio → Login
+    path('admin/', admin.site.urls),
+    path('cuentas/', include('cuentas.urls')),
+    path('alumnos/', include('alumnos.urls')),
+    path('scraper/', include('scraper.urls')),
+    path('dashboard/', dashboard, name="dashboard"),
+]
